@@ -8,6 +8,14 @@
         <col class="delete-col">
     </colgroup>
     <thead>
+    <tr>
+      <th>
+        <!-- <i ng-click="showColumnCustomization()" class="ion-navicon"></i>  -->
+        <button class="button button-icon ion-navicon" ng-click="modal.show()">
+        </button>
+        
+      </th>
+    </tr>
         <tr>
           <th class="sortable-column" ng-repeat="col in columns" ng-if="col.visible" st-sort="{{col.prop}}"  st-sort-default="{{col.sort}}" st-class-ascent="icon icon-sort-asc" st-class-descent="icon icon-sort-desc">
               {{col.label}}
@@ -18,7 +26,7 @@
         <tr ng-repeat="app in apts" class="app-row">
           <td ng-repeat="col in columns" ng-if="col.visible">
             <span>
-              <a ng-if="col.type === 'phoneNumber'" ng-href="tel:{{app[col.prop] | phoneNumberFilter}}">{{app[col.prop]}}</a>
+              <a ng-if="col.type === 'phoneNumber'" ng-href="tel:{{app[col.prop] | phoneNumberFilter}}">{{app[col.prop] | phoneNumberFilter}}</a>
               <a ng-if="col.type === 'address'" ng-href="http://maps.google.com/?q={{app[col.prop]}}" target="_blank">Go</a>
               <span ng-if="col.type === 'name'" ng-bind="app[col.prop]"></span>
             </span>

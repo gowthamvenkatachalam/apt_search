@@ -1,44 +1,20 @@
-<!-- <ion-modal-view>
-<div>
-  <div class="modal-header">
-    <h3 id="customize-cols-header" class="text">Customize columns<span ng-click="$dismiss()" class="icon icon-times pull-right"></span></h3>
-  </div>
-  <div class="modal-body">
-    <p>Select the fields you would like to be displayed in the table</p>
-    <div ng-repeat="col in columns">
-      <label><input type="checkbox" class='col-check' ng-model="col.visible">{{col.label}}</label>
-    </div>
-  </div>
-  <div class="modal-footer clearfix">
-    <button class="btn btn-primary customize-accept" type="button" ng-click="$close(columns)">Apply Changes</button>
-  </div>
-</div>
-</ion-modal-view> -->
-
-<ion-modal-view>
-<ion-header-bar class="bar bar-header bar-positive">
-  <h1 class="title">Customize columns</h1>
-  <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
-</ion-header-bar>
-<ion-content class="padding">
-<p>Select the fields you would like to be displayed in the table</p>
-    <div ng-repeat="col in columns">
-      <label><input type="checkbox" class='col-check' ng-model="col.visible">{{col.label}}</label>
-    </div>
-  <!-- <div class="list">
-    <label class="item item-input">
-      <span class="input-label">First Name</span>
-      <input ng-model="newUser.firstName" type="text">
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Last Name</span>
-      <input ng-model="newUser.lastName" type="text">
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Email</span>
-      <input ng-model="newUser.email" type="text">
-    </label>
-    <button class="button button-full button-positive" ng-click="createContact(newUser)">Create</button>
-  </div> -->
-</ion-content>
-</ion-modal-view>
+<!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Customize columns</h4>
+              </div>
+              <div class="modal-body">
+                <p>Select the fields you would like to be displayed in the table</p>
+                  <div ng-repeat="col in columns">
+                    <label><input type="checkbox" class='col-check' ng-model="col.visible">{{col.label}}</label>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
