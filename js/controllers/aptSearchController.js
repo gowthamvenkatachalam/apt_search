@@ -19,35 +19,52 @@ angular.module('weddingapp.aptSearchController', [])
         { label: 'Rent', visible: false, type: 'number', prop: 'rent'}
       ];
 
-    $scope.showColumnCustomization = function() {
-      var modalScope = $rootScope.$new(true);
-      modalScope.columns = angular.copy($scope.columns);
+  
+    // $scope.showColumnCustomization = function() {
+    //     var modalScope = $rootScope.$new(true);
+    //     modalScope.columns = angular.copy($scope.columns);
 
-      var modalInstance = $ionicModal.fromTemplateUrl('templates/customCol.html', {
-        scope: modalScope,
-        animation: 'slide-in-up',
-        backdropClickToClose: false,
-        hardwareBackButtonClose: false,
-        focusFirstInput: true
-      });
+    //     var modalInstance = $uibModal.open({
+    //       animation: true,
+    //       templateUrl: 'templates/customCol.html',
+    //       scope: modalScope,
+    //       size: 'sm'
+    //     });
 
-      modalInstance.then(function(modal) {
-        $scope.modal = modal;
-      });
-      // var modalScope = $rootScope.$new(true);
-      // modalScope.columns = angular.copy($scope.columns);
+    //     modalInstance.result.then(function (columns) {
+    //       $scope.columns = angular.copy(columns);
+    //     });
+    //   };
 
-      // var modalInstance = $ionicModal.open({
-      //   animation: true,
-      //   templateUrl: 'customCol.html',
-      //   scope: modalScope,
-      //   size: 'sm'
-      // });
+    var modalScope = $rootScope.$new(true);
+    modalScope.columns = angular.copy($scope.columns);
+    
+    var modalInstance = $ionicModal.fromTemplateUrl('templates/customCol.html', {
+      scope: modalScope
+    });
 
-      // modalInstance.result.then(function (columns) {
-      //   $scope.columns = angular.copy(columns);
-      // });
+    modalInstance.then(function(modal) {
+      $scope.modal = modal;
+    });
+
+    $scope.openModal = function() {
+      $scope.modal.show();
     };
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
 
 $scope.addRow = function(name, address, phone){   
 
@@ -90,7 +107,7 @@ $scope.removeRow = function(app){
         }
 
         var country, city, number;
-        console.log(value);
+
         switch (value.length) {
             case 10: // +1PPP####### -> C (PPP) ###-####
                 country = 1;
@@ -117,9 +134,12 @@ $scope.removeRow = function(app){
         if (country === 1) {
             country = "";
         }
-
         number = number.slice(0, 3) + '-' + number.slice(3);
-
-        return (country + "-" + city + "-" + number).trim();
+        if(country === ""){
+          return (city + '-' + number).trim();
+        }
+        else {
+          return (country + "-" + city + "-" + number).trim();
+        }
     };
 });
