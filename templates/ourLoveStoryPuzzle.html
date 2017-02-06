@@ -1,0 +1,29 @@
+<ion-view view-title="Our Love Story">
+  <ion-content>
+    <h1>Our Love Story</h1>
+    <!-- TODO Gowtham: Upload love story image -->
+    <!-- <sliding-puzzle size="3x3" src="img/1.jpg"></sliding-puzzle> -->
+    
+    <div class="status">
+		Moves: <strong>{{puzzle.api.moves}}</strong><br/>
+		Solved: <strong>{{puzzle.api.isSolved()}}</strong>
+	</div>
+
+	<div class="size">
+	<label class="item item-input">
+	  <span class="input-label">Rows:</span>
+	  <input type="number" ng-model="puzzle.rows" size="2" placeholder="Enter number of rows">
+	</label>
+	<label class="item item-input">
+	  <span class="input-label">Cols:</span>
+	  <input type="number" ng-model="puzzle.cols" size="2" placeholder="Enter number of columns">
+	</label><br>
+		<button ng-click="puzzle.api.shuffle()" class="button-positive">Shuffle</button>
+		<!-- <button ng-click="puzzle.api.solve()">Solve</button> -->
+	</div>
+    <br>
+    <sliding-puzzle ng-if="puzzle.rows === undefined || puzzle.rows === NULL"  api="puzzle.api" size="3 x 3" src="img/puzzle.png"></sliding-puzzle>
+    <sliding-puzzle ng-if="puzzle.rows !== undefined && puzzle.rows !== NULL" api="puzzle.api" size="{{puzzle.rows}} x {{puzzle.cols}}" src="img/puzzle.png"></sliding-puzzle>
+
+  </ion-content>
+</ion-view>

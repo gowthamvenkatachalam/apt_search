@@ -1,0 +1,76 @@
+<ion-view view-title="RSVP">
+  <ion-content>
+    <h1>RSVP</h1>
+    <!-- <ion-pane> -->
+      <!-- <ion-header-bar class="bar-stable"> -->
+        <!-- <h1 class="title">RSVP</h1> -->
+      <!-- </ion-header-bar> -->
+      <!-- <ion-content> -->
+      <!-- <h2>Share the first day of our new life with your family!</h2>
+           <form class="af-form" id="af-form"  name="rsvpform" >
+            <div class="col-lg-4 col-lg-offset-4">
+
+
+            <div class="form-group">
+            <input name="name" id="name" size="30" value="" placeholder="Name" class="text-input form-control" type="text" ng-model="name">
+            <label style="display: none;" class="error" for="name" id="name_error">Name </label>
+
+            </div>
+
+            <div class="form-group">
+            <input value="Will be there" id="response_accepted" name="response" type="radio" ng-model="response">
+            Will be there
+            <input value="Won't make it" id="response_declined" name="response" type="radio" ng-model="response">
+            Won't make it
+            <label style="display: none;" id="response_error" for="response" class="error">Please select an option</label>
+            </div>
+
+            <div class="form-group">
+            <input name="email" id="email" size="30" value="" placeholder="Email" class="text-input form-control" type="email" ng-model="email">
+            <label style="display: none;" class="error" for="email" id="email_error">Email</label>
+            </div>
+
+
+            <div class="form-group">
+              <input name="guests" id="guests" size="30" value="" placeholder="No. of guests attending" class="text-input form-control" type="number" ng-model="no">
+              <label style="display: none;" class="error" for="guests" id="guests_error">No. of guests is required.</label>
+            </div>
+
+
+
+
+            <div class="form-group">
+            <textarea style="border: 2px solid rgb(255, 255, 255); background: transparent none repeat scroll 0% 0%;" name="message" id="input-message" cols="30" placeholder="Message" class="text-input form-control" ng-model="mess"></textarea>
+            <label style="display: none;" class="error" for="input-message" id="message_error">Message</label>
+            </div>
+
+
+
+
+            <div class="form-group af-outer af-required">
+            <button class="button button-full button-positive" ng-click="addMessage(name,response,email,no,mess);" ng-disabled="!name && !response && !email && !no && !mess">  Send  </button>
+            </div>
+            </div>
+        </form> -->
+      <!-- </ion-content> -->
+    <!-- </ion-pane> -->
+    <table style="width:100%">
+      <tr st-table="messages" st-safe-src="rowCollection">
+        <th st-sort="Name"><strong>Name</strong></th>
+        <th st-sort="Response"><strong>Response</strong></th>
+        <th st-sort="Number"><strong>No. of guests</strong></th>
+        
+      </tr>
+      <tr ng-repeat="mess in messages">
+        <td>{{mess.Name}}</td>
+        <td>{{mess.Response}}</td>
+        <td>{{mess.Number}}</td>
+
+      </tr>
+    </table>
+    <span class="calm">Total: {{getTotal()}}</span>
+  </ion-content>
+</ion-view>
+
+
+ 

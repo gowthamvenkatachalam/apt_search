@@ -1,0 +1,31 @@
+<ion-view view-title="Dinner menu">
+<ion-pane>
+    <h1>Dinner</h1>
+    <ion-content ng-init="loadImages()">
+    <div class="row" ng-repeat="image in images" ng-if="$index % 4 === 0" width="128" height="128">
+        <div class="col col-25" ng-if="$index < images.length">
+            <img ng-src="{{images[$index].src}}" width="100%" />
+            <span class="calm">{{images[$index].desc}}</span>
+        </div>
+        <div class="col col-25" ng-if="$index + 1 < images.length">
+            <img ng-src="{{images[$index + 1].src}}" width="100%" />
+            <span class="calm">{{images[$index + 1].desc}}</span>
+        </div>
+        <div class="col col-25" ng-if="$index + 2 < images.length">
+            <img ng-src="{{images[$index + 2].src}}" width="100%" />
+            <span class="calm">{{images[$index + 2].desc}}</span>
+        </div>
+        <div class="col col-25" ng-if="$index + 3 < images.length">
+            <img ng-src="{{images[$index + 3].src}}" width="100%" />
+            <span class="calm">{{images[$index + 3].desc}}</span>
+        </div>
+    </div>
+        <!-- <div class="row responsive-md">
+            <div class="col col-25" ng-repeat="image in images">
+                <img ng-src="{{image.src}}" width="100%" />
+                <span class="calm">{{image.desc}}</span>
+            </div>
+        </div> -->
+    </ion-content>
+</ion-pane>
+</ion-view>

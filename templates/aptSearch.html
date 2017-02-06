@@ -1,0 +1,63 @@
+<ion-view view-title="Apartments">
+  <ion-content>
+    <h1>Apartments</h1>
+    <table class="table">
+    <colgroup>
+        <col class="alerts-col">
+        <col ng-repeat="col in columns" ng-if="col.visible">
+        <col class="delete-col">
+    </colgroup>
+    <thead>
+        <tr>
+          <th class="sortable-column" ng-repeat="col in columns" ng-if="col.visible" st-sort="{{col.prop}}"  st-sort-default="{{col.sort}}" st-class-ascent="icon icon-sort-asc" st-class-descent="icon icon-sort-desc">
+              {{col.label}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="app in apts" class="app-row">
+          <td ng-repeat="col in columns" ng-if="col.visible">
+            <span>
+              <a ng-if="col.type === 'phoneNumber'" ng-href="tel:{{app[col.prop] | phoneNumberFilter}}">{{app[col.prop]}}</a>
+              <a ng-if="col.type === 'address'" ng-href="http://maps.google.com/?q={{app[col.prop]}}" target="_blank">Go</a>
+              <span ng-if="col.type === 'name'" ng-bind="app[col.prop]"></span>
+            </span>
+          </td>
+          <td><span class="ion-close-round pull-right" ng-click="removeRow(app)"></span></td>
+        </tr>
+  </tbody>
+    
+</table>
+    <form class="af-form" id="af-form"  name="rsvpform" >
+            <div class="col-lg-4 col-lg-offset-4">
+
+
+            <div class="form-group">
+            <input name="name" id="name" size="30" value="" placeholder="Name" class="text-input form-control" type="text" ng-model="name">
+            <label style="display: none;" class="error" for="name" id="name_error">Name</label>
+
+            </div>
+
+            <div class="form-group">
+            <input name="address" id="address" size="100" value="" placeholder="Address" class="text-input form-control" type="text" ng-model="address">
+            <label style="display: none;" class="error" for="size" id="email_error">Address</label>
+            </div>
+
+
+            <div class="form-group">
+              <input name="phone" id="phone" size="30" value="" placeholder="Phone number" class="text-input form-control" type="number" ng-model="phone">
+              <label style="display: none;" class="error" for="guests" id="guests_error">Phone number</label>
+            </div>
+
+
+
+            <div class="form-group af-outer af-required">
+            <button class="button button-full button-positive" ng-click="addRow(name,address,phone);">  Send  </button>
+            </div>
+            </div>
+        </form>
+  </ion-content>
+</ion-view>
+
+
+ 

@@ -1,0 +1,30 @@
+<ion-view view-title="Twilio - SMS">
+  <ion-content ng-controller="TwilioCtrl">
+
+  <div class="list">
+    <label class="item item-input">
+      <input type="text" placeholder="Phone number" ng-model="phoneNum">
+    </label>
+    <label class="item item-input">
+      <textarea placeholder="Message" ng-model="message"></textarea>
+    </label>
+
+    <button class="button button-full button-positive" on-touch="sendSMS()" ng-disabled="!msgReady()">
+      Send message
+    </button>
+
+  </div>
+
+  <div class="row" ng-show="smsResponse.status === 'OK'">
+    <div class="col">{{smsResponse.message}}</div>
+  </div>
+
+<hr>
+    <input type="submit" value="get messages" on-touch="getMessagesList()">
+    <div class="row" ng-show="smsResponse.showResults === 'OK'">
+      <div class="col">{{smsResponse.messages-list}}</div>
+    </div>
+
+
+  </ion-content>
+</ion-view>
